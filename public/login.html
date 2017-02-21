@@ -1,0 +1,37 @@
+<article>
+    <header>
+        <h2>Administration Portal</h2>
+    </header>
+
+    <form name="loginForm" data-ng-controller="LoginController" novalidate>
+        <div class="row">
+            <input type="text" name="username" data-ng-model="username" placeholder="Username:" required/>
+            <div ng-show="loginForm.$submitted || loginForm.username.$dirty">
+                <div class="statusMessage" ng-show="loginForm.username.$error.required">
+                    O username é obrigatório.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <input type="password" name="password" data-ng-model="password" placeholder="Password:" required/>
+            <div ng-show="loginForm.$submitted || loginForm.password.$dirty">
+                <div class="statusMessage" ng-show="loginForm.password.$error.required">
+                    A password é obrigatória.
+                </div>
+            </div>
+        </div>
+
+        <div class="row right">
+            <button id="login" class="primary" data-ng-click="login()"
+                    data-ng-disabled="loginForm.$invalid || requestInProgress">
+                Log In
+            </button>
+        </div>
+
+        <div class="row">
+            <div id="statusMessage"
+                 ng-class="{'statusMessage error': statusMessageIsError, 'statusMessage success': !statusMessageIsError}"
+                 ng-bind="statusMessage">{{statusMessage}}</div>
+        </div>
+    </form>
+</article>

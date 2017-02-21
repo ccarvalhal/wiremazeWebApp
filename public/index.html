@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wiremaze Message Board</title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+</head>
+<body data-ng-app="app" data-ng-controller="MainController">
+    <header class="pageHeader">
+        <h1><a href="" ng-click="switchAdminView()" title="{{getMainHeaderTipMessage()}}">Wiremaze Message Board</a></h1>
+        <div class="titleComplement">
+            <address>por <a href="mailto:carvalhal.carlos@gmail.com">Carlos Carvalhal</a></address>
+        </div>
+    </header>
+
+    <div data-ng-view="" ng-class="['mainContainer', getCurrentViewName()]"></div>
+
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-route/angular-route.min.js"></script>
+    <script src="javascripts/app.module.js"></script>
+    <script src="javascripts/route.config.js"></script>
+    <script src="javascripts/main.controller.js"></script>
+    <script src="javascripts/login.controller.js"></script>
+    <script src="javascripts/postsManagement.controller.js"></script>
+    <script src="javascripts/messageBoard.controller.js"></script>
+</body>
+</html>

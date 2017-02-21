@@ -1,0 +1,34 @@
+<div data-ng-controller="PostsManagementController">
+    <h3><span>{{comments.length}} Comentários</span></h3>
+    <ul>
+        <li data-ng-repeat="comment in comments | orderBy : '-submissionDateTime' track by comment._id">
+            <article>
+                <aside>
+                    <img alt="" data-ng-src="{{comment.avatar}}" class="avatar" height="50" width="50">
+                    <div class="commentAuthor">
+                        Submetido por <address>{{comment.authorName}}</address>
+                        em <time datetime="{{comment.submissionDateTime}}">
+                        {{comment.submissionDateTime | date:'dd-MM-yyyy HH:mm:ss'}}</time>
+                        <button id="removeComment" class="danger right" data-ng-click="removeComment(comment._id)"
+                                data-ng-disabled="requestInProgress">
+                            Remover Comentário
+                        </button>
+                        <button id="validateComment" class="primary right" data-ng-click="validateComment(comment._id)"
+                                data-ng-if="!comment.isValidated" data-ng-disabled="requestInProgress">
+                            Validar Comentário
+                        </button>
+                    </div>
+                </aside>
+                <div class="commentText">
+                    {{comment.comment}}
+                </div>
+            </article>
+        </li>
+    </ul>
+
+    <div class="row">
+        <div id="statusMessage"
+             ng-class="{'statusMessage error': statusMessageIsError, 'statusMessage success': !statusMessageIsError}"
+             ng-bind="statusMessage">{{statusMessage}}</div>
+    </div>
+</div>

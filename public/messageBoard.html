@@ -1,0 +1,142 @@
+<article>
+    <header>
+        <h2>Baleia com Comportamento Estranho tinha 30 Sacos de Plástico no Estômago</h2>
+        <div class="titleComplement">
+            <address>por <a href="http://hypescience.com" target="_blank">HypeScience</a> (versão original
+                <a href="http://hypescience.com/baleia-com-comportamento-estranho-tinha-30-sacos-plasticos-no-estomago/"
+                   target="_blank">aqui</a>)</address>
+            <time datetime="1486252800">publicado em 05/02/2017</time>
+        </div>
+        <div class="summary">
+            Uma baleia começou a rondar a cidade de Bergen, na Noruega, no passado mês de janeiro.
+            Foram feitas várias tentativas para guiá-la de volta às águas profundas mas sem sucesso.
+        </div>
+    </header>
+
+    <div>
+        <figure>
+            <figcaption>
+                <a href="http://www.bt.no/nyheter/lokalt/Syk-hval-hadde-30-plastposer-i-magen-329775b.html"
+                    target="_blank" class="ext-link">Jarle Vindenes / Bergens Tidende</a>
+            </figcaption>
+            <img src="images/fig1.jpg"/>
+        </figure>
+        <p>
+            A baleia aparentava estar exausta e com vários problemas de saúde, pelo que especialistas em vida marinha
+            da região norueguesa optaram por sacrificá-la.
+        </p>
+        <p>
+            O animal, uma <em>baleia-bicuda-de-cuvier</em> com seis metros de comprimento, foi examinado depois da
+            morte para se perceber o que é que se passava ao certo.
+        </p>
+        <p>
+            <q>O estômago estava cheio de plástico. Foram encontrados cerca de <em>30 sacos de plástico</em>,
+                assim como grandes e pequenos pedaços de plástico. Isto não é nada bom, aliás é incrivelmente triste</q>,
+            diz o zoólogo e professor Terje Lislevand, da Universidade de Bergen.
+        </p>
+        <p>
+            O investigador acredita que todo o material encontrado no sistema digestivo da baleia esteja por detrás
+            do comportamento estranho do animal. Tudo indica que estava a sentir muitas dores.
+        </p>
+        <p>
+            <q>Esta baleia não foi feliz. <em>O plástico formou uma grande bola no estômago</em> e encheu-o
+            completamente. O plástico deve ter entupido o seu sistema digestivo</q>, afirmou ao jornal Bergens Tidende.
+        </p>
+        <figure>
+            <figcaption>
+                <a href="http://www.bt.no/nyheter/lokalt/Syk-hval-hadde-30-plastposer-i-magen-329775b.html"
+                   target="_blank" class="ext-link">Christoph Noever / Bergens Tidende</a>
+            </figcaption>
+            <img src="images/fig2.jpg">
+        </figure>
+        <p>
+            Outro fator estranho sobre a baleia é que esta foi o primeiro exemplar da sua espécie a ser encontrado no país.
+        </p>
+        <p>
+            <q>Este tipo de baleia está presente em todo o mundo, mas <em>na Noruega é uma raridade</em>.
+                Já ouvi rumores de outros exemplares nas nossas águas, mas esta é provavelmente a primeira
+                baleia-bicuda-de-cuvier neste país</q>, acrescenta.
+        </p>
+        <p>
+            O investigador explica que o animal provavelmente comeu estes plásticos por pensar que
+            <em>se tratavam de lulas</em>. <q>O plástico não é apenas um problema para as baleias, mas também para
+            animais como as aves e as tartarugas</q>, aponta.
+        </p>
+        <p>
+            Segundo o professor, os ossos da baleia e os plásticos encontrados vão ser expostos no
+            Museu de História Natural do país, no verão de 2019, uma forma de alertar para este tipo de acidentes
+            provocados pelo Homem.
+        </p>
+    </div>
+</article>
+
+<aside data-ng-controller="MessageBoardController">
+    <h3><span>{{comments.length}} Comentários</span></h3>
+    <ul>
+        <li data-ng-repeat="comment in comments | orderBy : '-submissionDateTime' track by comment._id">
+            <article>
+                <aside>
+                    <img alt="" data-ng-src="{{comment.avatar}}" class="avatar" height="50" width="50">
+                    <div class="commentAuthor">
+                        Submetido por <address>{{comment.authorName}}</address>
+                        em <time datetime="{{comment.submissionDateTime}}">
+                        {{comment.submissionDateTime | date:'dd-MM-yyyy HH:mm:ss'}}</time>
+                    </div>
+                </aside>
+                <div class="commentText">
+                    {{comment.comment}}
+                </div>
+            </article>
+        </li>
+    </ul>
+    <form id="commentForm" name="commentForm" novalidate>
+        <h3><span>Comentar</span></h3>
+        <div class="row">
+            <textarea name="commentText" data-ng-model="commentText" placeholder="Comentário:"
+                      required></textarea>
+            <div ng-show="commentForm.$submitted || commentForm.commentText.$dirty">
+                <div class="statusMessage" ng-show="commentForm.commentText.$error.required">
+                    O texto do comentário é obrigatório.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <input type="text" name="commentAuthorName" data-ng-model="commentAuthorName" placeholder="Nome:"
+                   required/>
+            <div ng-show="commentForm.$submitted || commentForm.commentAuthorName.$dirty">
+                <div class="statusMessage" ng-show="commentForm.commentAuthorName.$error.required">
+                    O nome do autor do comentário é obrigatório.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <input type="email" name="commentAuthorEMail" data-ng-model="commentAuthorEMail" placeholder="E-Mail:"
+                   required/>
+            <div ng-show="commentForm.$submitted || commentForm.commentAuthorEMail.$dirty">
+                <div class="statusMessage" ng-show="commentForm.commentAuthorEMail.$error.required">
+                    O E-Mail do autor do comentário é obrigatório.
+                </div>
+                <div class="statusMessage" ng-show="commentForm.commentAuthorEMail.$error.email">
+                    Este E-Mail está inválido.
+                </div>
+            </div>
+        </div>
+
+        <div class="row right">
+            <button id="submitComment" class="primary" data-ng-click="submitComment(commentForm)"
+                    data-ng-disabled="commentForm.$invalid || requestInProgress">
+                Submeter Comentário
+            </button>
+            <button id="cancelComment" class="danger" data-ng-click="resetForm(commentForm)"
+                    data-ng-disabled="!commentForm.$dirty || requestInProgress">
+                Cancelar Comentário
+            </button>
+        </div>
+
+        <div class="row">
+            <div id="statusMessage"
+                 ng-class="{'statusMessage error': statusMessageIsError, 'statusMessage success': !statusMessageIsError}"
+                 ng-bind="statusMessage">{{statusMessage}}</div>
+        </div>
+    </form>
+</aside>
