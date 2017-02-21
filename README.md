@@ -1,18 +1,14 @@
 # wiremazeWebApp
 Wiremaze Message Board Web App
 
-1. This project is my solution for a challenge for a recluitment process for Wiremaze.
+This project is a minimalist but fully functional Message Board as a prove of concept: The owner of the Message Board publish a document and the readers posts comments about it.
 
-2. You will need NodeJS and a MongoDB DBMS to test this application. Configure properly the file "connection.js".
+To post a comment, the reader does not need to sign up but its comments are only published after the approving of the administrator.
 
-3. You have a script ("initializeDB.js") to initialize the database:
+An administrative view is provided to the administrator to manage (approving to publishing and removing) the readers messages.
 
-node bin/initializeDB.js
+To switch between the regular an the administrative view, click the page title.
 
-or
+This application was developed using AngularJS for the front-end, NodeJS for the back-end and MongoDB (via Mongoose) as the DBMS. To configure the DB, look at the file "connection.js".
 
-npm run initializeCollections
-
-4. Everybody can submit comments but comments are published only after the validation by the administrator.
-
-5. To switch between the regular and administrative views, click the main title of the page.
+An script for the database initialization is provided ("initializeDB.js"). You can run it by itself (node bin/initializeDB.js) or throw the "initializeCollections" task (npm run initializeCollections).
