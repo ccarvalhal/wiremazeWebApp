@@ -37,7 +37,7 @@
         };
 
         /**
-         * Switches between the ANgularJS Route Views "/login" and "/".
+         * Switches between the AngularJS Route Views "/login" and "/".
          */
         $scope.switchAdminView = function() {
             $location.path($scope.getCurrentViewName() === "" ? "/login" : "/");

@@ -61,7 +61,7 @@ router.post("/comments/:commentId", function(req, res, next) {
     }
 
     if (typeof(validationState) !== "boolean") {
-        res.status(400).json({error: "Invalid field to update.", transactionId: newTransactionId});
+        res.status(400).json({error: "Invalid target validation state.", transactionId: newTransactionId});
         return false;
     }
 
@@ -103,7 +103,7 @@ router.put("/comments", function(req, res, next) {
             + "?s=50&d=identicon"};
     commentsManager.addComment(commentToAdd, function(error, commentAdded) {
         if (error) {
-            console.error("An error occurred while inserting The comment by '%s (%s)': %s",
+            console.error("An error occurred while inserting the comment by '%s (%s)': %s",
                 authorName, authorEMail, error);
             res.status(500).json({error: "It was not possible to insert the comment."});
             return false;
@@ -136,7 +136,7 @@ router.delete("/comments/:commentId", function(req, res, next) {
             res.json({transactionId: newTransactionId, comment: removedComment});
         } else {
             console.error("The comment with the ID '%s' does not exist.", commentId);
-            res.status("404").json({error: "The comment does not exist.", transactionId: newTransactionId});
+            res.status(404).json({error: "The comment does not exist.", transactionId: newTransactionId});
         }
     });
 });

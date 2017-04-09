@@ -18,20 +18,6 @@
         $scope.statusMessageIsError = true;
         $scope.requestInProgress = false;
 
-        $rootScope.user = {};
-
-        /**
-         * Checks if there is an authenticated user.
-         *
-         * @return {boolean} If there is an authenticated user returns "true" otherwise returns "false".
-         */
-        $scope.isUserAuthenticated = function() {
-            var user, name, transactionId;
-            return !!(typeof(user = $rootScope.user) === "object" && user !== null
-                && typeof(name = user.name) === "string" && name.trim().length > 0
-                && typeof(transactionId = user.transactionId) === "string" && transactionId.trim().length > 0);
-        };
-
         /**
          * Callback for the "login" button click event.
          */
