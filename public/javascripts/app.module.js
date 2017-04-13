@@ -1,5 +1,5 @@
 /**
- * Declaration of the AngularJS module in charge of the Wiremaze Message Board web application.
+ * Declaration of the AngularJS module in charge of the Wiremaze Message Board Web Application.
  *
  * Created by Carlos Carvalhal on 10-02-2017.
  */
